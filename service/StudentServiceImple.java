@@ -39,12 +39,12 @@ public class StudentServiceImple implements StudentService {
            //2 - Fetch data depending on the Role 
            public List<Student> findByRole(String role){
         	   try {
-        		   BufferedReader br = new BufferedReader(new FileReader("D:\\Student.json"));
-        		   List<Student> st = mapper.readValue(br, new TypeReference<List<Student>>(){});
+        		   BufferedReader br = new BufferedReader(new FileReader("D:\\Student.json"));       // To read Json file
+        		   List<Student> st = mapper.readValue(br, new TypeReference<List<Student>>(){});              // Converted json data to List<Student>
         		   List<Student> li2 = new ArrayList<>();
         		   
         		   for(Student s : st) {
-        			   li2 = st.stream().filter(p -> p.getRole().equalsIgnoreCase(role)).collect(Collectors.toList());
+        			   li2 = st.stream().filter(p -> p.getRole().equalsIgnoreCase(role)).collect(Collectors.toList());  //applying stream api we ca also use li.add() simply
         		   }
         		   
         		   return li2;
@@ -98,7 +98,7 @@ public class StudentServiceImple implements StudentService {
         				   li.add(s);
         			   }
         		   }
-        		   BufferedWriter bw = new BufferedWriter(new FileWriter("D:\\write.json"));
+        		   BufferedWriter bw = new BufferedWriter(new FileWriter("D:\\write.json"));    // Writing on json file
         		   mapper.writerWithDefaultPrettyPrinter().writeValue(bw,li);
         		   return li;
         	   } 
@@ -121,7 +121,7 @@ public class StudentServiceImple implements StudentService {
         			   }
         		   }
         		   BufferedWriter bw = new BufferedWriter(new FileWriter("D:\\write.json"));
-        		   mapper.writerWithDefaultPrettyPrinter().writeValue(bw,l);
+        		   mapper.writerWithDefaultPrettyPrinter().writeValue(bw,l);                 //writing on json file after taking value from the client side (i hav used Postman)
         		   
         	   }
         	   catch(IOException e) {
