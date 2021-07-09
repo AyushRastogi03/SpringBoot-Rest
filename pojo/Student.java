@@ -1,6 +1,6 @@
 package com.example.demo.pojo;
 
-public class Student {
+public class Student {  // pojo class
 
 	private String firstName ;
 	private String lastName;
